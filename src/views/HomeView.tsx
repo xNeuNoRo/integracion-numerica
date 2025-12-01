@@ -33,7 +33,7 @@ export default function HomeView() {
       {/* SECCIÓN SOBRE EL CURSO */}
       <section className="bg-blue-50 p-6 rounded-xl shadow-md space-y-3">
         <h2 className="text-2xl font-bold text-blue-700">
-          Curso: Cálculo Integral — Sección 12
+          Curso: Cálculo Integral (2025-C3) — Miércoles Sección 12
         </h2>
         <p className="text-gray-700">
           Este proyecto pertenece a la unidad de <strong>Integración Numérica</strong>, 
@@ -47,11 +47,11 @@ export default function HomeView() {
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Integrantes del Grupo</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <MemberCard fullname="Ángel González Muñoz" matricula="2025-1122" photoUrl="/integrantes/default-member-img.webp" />
-          <MemberCard fullname="Ismael Vásquez" matricula="2025-1204" photoUrl="/integrantes/default-member-img.webp" />
-          <MemberCard fullname="Jhazan Omal Lebrón Encarnación" matricula="2025-0688" photoUrl="/integrantes/default-member-img.webp" />
+          <MemberCard fullname="Ángel González Muñoz" matricula="2025-1122" photoUrl="/integrantes/angel.webp" />
+          <MemberCard fullname="Ismael Vásquez" matricula="2025-1204" photoUrl="/integrantes/ismael.jpeg" />
+          <MemberCard fullname="Jhazan Omal Lebrón Encarnación" matricula="2025-0688" photoUrl="/integrantes/omal.jpeg" />
           <MemberCard fullname="Cesar Augusto Rivera Pantaleón" matricula="2025-0751" photoUrl="/integrantes/default-member-img.webp" />
-          <MemberCard fullname="Danny Peña Adames" matricula="2025-1124" photoUrl="/integrantes/default-member-img.webp" />
+          <MemberCard fullname="Danny Peña Adames" matricula="2025-1124" photoUrl="/integrantes/danny.jpeg" />
           <MemberCard fullname="Andy Yohel Pion Carpio" matricula="2025-0460" photoUrl="/integrantes/default-member-img.webp" />
         </div>
       </section>
