@@ -273,7 +273,7 @@ export default function SimpsonCalc() {
         <h2 className="text-purple-500 font-black text-2xl">
           Código en Python
         </h2>
-        <SimpsonPYCode a={a} b={b} n={n} fn={fn} />
+        <SimpsonPYCode a={a} b={b} n={n} fn={fn} invalidFn={noFunction || simpsonInvalido} />
       </div>
     </div>
   );

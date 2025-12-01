@@ -1,3 +1,4 @@
+import { PlayIcon } from "@heroicons/react/16/solid";
 import { usePyRunner } from "../hooks/usePyRunner";
 
 type PyRunnerProps = {
@@ -16,6 +17,7 @@ export default function PyRunner({ code, readyToRun }: PyRunnerProps) {
         disabled={!ready || loading || !readyToRun}
         className="bg-blue-500 hover:cursor-pointer hover:bg-blue-600 disabled:bg-gray-600 px-4 py-2 rounded-lg font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
       >
+        <PlayIcon className="h-6 w-6 inline-block mr-2" />
         Ejecutar código Python
       </button>
 

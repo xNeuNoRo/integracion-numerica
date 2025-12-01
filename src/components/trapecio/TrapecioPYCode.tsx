@@ -9,9 +9,10 @@ type TrapecioPYCodeProps = {
   b: number;
   n: number;
   fn: string;
+  invalidFn: boolean;
 };
 
-export default function TrapecioPYCode({ a, b, n, fn }: TrapecioPYCodeProps) {
+export default function TrapecioPYCode({ a, b, n, fn, invalidFn }: TrapecioPYCodeProps) {
   // Conversión completa: JS → Python compatible con numpy
   const fnPython = fn
     .replace(/\^/g, "**") // potencia (x^2 → x**2)
@@ -76,7 +77,7 @@ print("Área aproximada =", area)
     Prism.highlightAll(); // Resaltar el código con PrismJS
   }, [pyCode]);
   
-  const readyToRun = validateTrapezoidalMethod(a, b, n, fn);
+  const readyToRun = !invalidFn && validateTrapezoidalMethod(a, b, n, fn);
 
   return (
     <>

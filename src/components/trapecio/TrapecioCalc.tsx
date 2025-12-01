@@ -246,7 +246,7 @@ export default function TrapecioCalc() {
         <h2 className="text-blue-600 font-black text-2xl">
           Código en Python
         </h2>
-        <TrapecioPYCode a={a} b={b} n={n} fn={fn} />
+        <TrapecioPYCode a={a} b={b} n={n} fn={fn} invalidFn={noFunction} />
       </div>
     </div>
   );

@@ -9,9 +9,10 @@ type SimpsonPYCodeProps = {
   b: number;
   n: number;
   fn: string;
+  invalidFn: boolean;
 };
 
-export default function SimpsonPYCode({ a, b, n, fn }: SimpsonPYCodeProps) {
+export default function SimpsonPYCode({ a, b, n, fn, invalidFn }: SimpsonPYCodeProps) {
   // Convertir la función a una sintaxis válida en Python
   const fnPython = fn
     .replace(/\^/g, "**") // potencia
@@ -78,7 +79,7 @@ print("Área aproximada =", area)
     Prism.highlightAll(); // Resaltar el código con PrismJS
   }, [pyCode]);
 
-  const readyToRun = validateSimpsonMethod(a, b, n, fn);
+  const readyToRun = !invalidFn && validateSimpsonMethod(a, b, n, fn);
 
   return (
     <>
