@@ -8,7 +8,7 @@ export default function HomeView() {
       {/* HERO */}
       <section className="flex flex-col md:flex-row items-center gap-8">
         <img
-          src="https://picsum.photos/500/350?random=1"
+          src="/home.jpg"
           alt="Integración numérica"
           className="rounded-xl shadow-lg max-w-md"
         />
