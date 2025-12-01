@@ -17,7 +17,7 @@ export function usePyRunner() {
 
     // Crear el worker
     const worker = new Worker(
-      new URL("../workers/pyodide-worker.js", import.meta.url)
+      "/workers/pyodide-worker.js", { type: "classic" }
     );
 
     // Guardar referencia al worker

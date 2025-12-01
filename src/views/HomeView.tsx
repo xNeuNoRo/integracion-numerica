@@ -10,7 +10,7 @@ export default function HomeView() {
         <img
           src="/home.jpg"
           alt="Integración numérica"
-          className="rounded-xl shadow-lg max-w-md"
+          className="rounded-xl shadow-lg w-full max-w-sm md:max-w-md h-auto object-cover"
         />
 
         <div className="space-y-3">
