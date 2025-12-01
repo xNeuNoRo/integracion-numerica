@@ -16,18 +16,14 @@ self.onmessage = async (event) => {
     // Cargar Pyodide desde el CDN oficial
     importScripts("https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.js");
 
-    // Inicializar Pyodide con manejo de stdout y stderr
+    // Inicializar Pyodide
     self.pyodide = await loadPyodide({
       indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/",
     });
 
-    // // Configurar la salida estándar y de errores para enviar mensajes al hilo principal
-    // self.pyodide.setStdout({
-    //   batched: (msg) => self.postMessage({ type: "stdout", msg }),
-    // });
-    // self.pyodide.setStderr({
-    //   batched: (msg) => self.postMessage({ type: "stderr", msg }),
-    // });
+    // ELIMINADO: setStdout no funciona en producción (Vercel)
+    // pyodide.setStdout({...})
+    // pyodide.setStderr({...})
 
     // Cargar el paquete numpy
     await self.pyodide.loadPackage("numpy");
@@ -40,23 +36,27 @@ self.onmessage = async (event) => {
   if (type === "run") {
     // Asegurarse de que Pyodide esté cargado
     if (!pyodide) return;
-    // Ejecutar el código Python de forma asíncrona
+
+    // Envolver el código generado por el usuario para capturar stdout
+    const wrappedCode = `
+import sys, io
+_stdout_buffer = io.StringIO()
+sys.stdout = _stdout_buffer
+
+# --- CODIGO ORIGINAL GENERADO POR EL USUARIO ---
+${code}
+
+_stdout_buffer.getvalue()
+`;
+
     try {
-      const wrappedCode = `
-      import sys
-      import io
-      _stdout_buffer = io.StringIO()
-      sys.stdout = _stdout_buffer
-
-      # ---- CODE ----
-      ${code}
-
-      _stdout_buffer.getvalue()
-      `;
+      // Ejecutar el código Python de forma asíncrona
       const output = await pyodide.runPythonAsync(wrappedCode);
+
+      // Enviar la salida estándar al hilo principal
       self.postMessage({ type: "stdout", msg: output });
+
       // Notificar al hilo principal que la ejecución ha terminado
-      // No se envia el output aqui pq ya lo hara automaticamente por stdout y stderr
       self.postMessage({ type: "done" });
     } catch (err) {
       // En caso de error, enviar el mensaje de error al hilo principal

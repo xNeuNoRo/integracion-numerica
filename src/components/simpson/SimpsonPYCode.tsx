@@ -30,26 +30,26 @@ export default function SimpsonPYCode({ a, b, n, fn }: SimpsonPYCodeProps) {
     .replace(/\babs/g, "np.abs"); // valor absoluto
 
   const pyCode = `
-  # Regla de Simpson en Python
+# Regla de Simpson en Python
   
-  # Importar libreria numpy para funciones matemáticas
-  import numpy as np
+# Importar libreria numpy para funciones matemáticas
+import numpy as np
   
-  # Función para evaluar la función de integración
-  def f(x):
+# Función para evaluar la función de integración
+def f(x):
     return ${fnPython} # función de integración
     
-  # Parámetros
-  a = ${a} # límite inferior
-  b = ${b} # límite superior
-  n = ${n} # n (subdivisiones, debe ser par)
-  h = (b - a) / n # ancho de cada subintervalo
+# Parámetros
+a = ${a} # límite inferior
+b = ${b} # límite superior
+n = ${n} # n (subdivisiones, debe ser par)
+h = (b - a) / n # ancho de cada subintervalo
 
-  # Cálculo del área usando la Regla de Simpson
-  area = 0
+# Cálculo del área usando la Regla de Simpson
+area = 0
   
-  # Iterar sobre cada punto
-  for i in range(0, n+1):
+# Iterar sobre cada punto
+for i in range(0, n+1):
     # Calcular x_i (x0, x1, ..., xn)
     x = a + i*h
 
@@ -67,12 +67,12 @@ export default function SimpsonPYCode({ a, b, n, fn }: SimpsonPYCodeProps) {
     # Sumar al área total, el coeficiente por f(x_i)
     area += coef * f(x)
 
-  # Multiplicar por h/3 al final
-  area *= h/3
+# Multiplicar por h/3 al final
+area *= h/3
   
-  # Imprimir resultado
-  print("Área aproximada =", area)
-  `;
+# Imprimir resultado
+print("Área aproximada =", area)
+`;
 
   useEffect(() => {
     Prism.highlightAll(); // Resaltar el código con PrismJS
