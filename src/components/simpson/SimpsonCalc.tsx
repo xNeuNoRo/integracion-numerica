@@ -8,6 +8,7 @@ import {
   VictoryVoronoiContainer,
   VictoryTooltip,
 } from "victory";
+import SimpsonPYCode from "./SimpsonPYCode";
 
 const math = create(all);
 
@@ -266,6 +267,13 @@ export default function SimpsonCalc() {
           {a.toString() === "NaN" ? "Indefinido" : a},{" "}
           {b.toString() === "NaN" ? "Indefinido" : b}] con {n} subdivisiones.
         </p>
+      </div>
+
+      <div className="mt-10">
+        <h2 className="text-purple-500 font-black text-2xl">
+          Código en Python
+        </h2>
+        <SimpsonPYCode a={a} b={b} n={n} fn={fn} />
       </div>
     </div>
   );

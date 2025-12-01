@@ -8,6 +8,7 @@ import {
   VictoryVoronoiContainer,
   VictoryTooltip,
 } from "victory";
+import TrapecioPYCode from "./TrapecioPYCode";
 
 const math = create(all);
 
@@ -240,6 +241,8 @@ export default function TrapecioCalc() {
           subdivisiones.
         </p>
       </div>
+
+      <TrapecioPYCode a={a} b={b} n={n} fn={fn} />
     </div>
   );
 }
