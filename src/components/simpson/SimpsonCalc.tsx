@@ -120,33 +120,6 @@ export default function SimpsonCalc() {
 
   const totalArea = segmentos.reduce((acc, s) => acc + s.area, 0);
 
-  // Para dibujar "la parábola imaginaria" de Simpson (línea punteada)
-  const buildImaginaryParabola = (
-    x0: number,
-    y0: number,
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number
-  ) => {
-    const pts = [];
-    const steps = 30;
-    const dx = (x2 - x0) / steps;
-
-    for (let i = 0; i <= steps; i++) {
-      const t = i / steps;
-      const x = x0 + dx * i;
-
-      // Parabola imaginaria: suavizada y estilizada
-      const y =
-        (1 - t) * (1 - t) * y0 + (4 * t * (1 - t) * y1) / 2 + t * t * y2;
-
-      pts.push({ x, y });
-    }
-
-    return pts;
-  };
-
   return (
     <div className="flex flex-col gap-6 p-6">
       <h1 className="text-purple-500 font-black text-4xl">
