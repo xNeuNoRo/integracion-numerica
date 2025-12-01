@@ -21,13 +21,13 @@ self.onmessage = async (event) => {
       indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/",
     });
 
-    // Configurar la salida estándar y de errores para enviar mensajes al hilo principal
-    self.pyodide.setStdout({
-      batched: (msg) => self.postMessage({ type: "stdout", msg }),
-    });
-    self.pyodide.setStderr({
-      batched: (msg) => self.postMessage({ type: "stderr", msg }),
-    });
+    // // Configurar la salida estándar y de errores para enviar mensajes al hilo principal
+    // self.pyodide.setStdout({
+    //   batched: (msg) => self.postMessage({ type: "stdout", msg }),
+    // });
+    // self.pyodide.setStderr({
+    //   batched: (msg) => self.postMessage({ type: "stderr", msg }),
+    // });
 
     // Cargar el paquete numpy
     await self.pyodide.loadPackage("numpy");
@@ -42,7 +42,19 @@ self.onmessage = async (event) => {
     if (!pyodide) return;
     // Ejecutar el código Python de forma asíncrona
     try {
-      await pyodide.runPythonAsync(code);
+      const wrappedCode = `
+      import sys
+      import io
+      _stdout_buffer = io.StringIO()
+      sys.stdout = _stdout_buffer
+
+      # ---- CODE ----
+      ${code}
+
+      _stdout_buffer.getvalue()
+      `;
+      const output = await pyodide.runPythonAsync(wrappedCode);
+      self.postMessage({ type: "stdout", msg: output });
       // Notificar al hilo principal que la ejecución ha terminado
       // No se envia el output aqui pq ya lo hara automaticamente por stdout y stderr
       self.postMessage({ type: "done" });
