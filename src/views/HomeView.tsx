@@ -50,7 +50,7 @@ export default function HomeView() {
           <MemberCard fullname="Ángel González Muñoz" matricula="2025-1122" photoUrl="/integrantes/angel.webp" />
           <MemberCard fullname="Ismael Vásquez" matricula="2025-1204" photoUrl="/integrantes/ismael.jpeg" />
           <MemberCard fullname="Jhazan Omal Lebrón Encarnación" matricula="2025-0688" photoUrl="/integrantes/omal.jpeg" />
-          <MemberCard fullname="Cesar Augusto Rivera Pantaleón" matricula="2025-0751" photoUrl="/integrantes/default-member-img.webp" />
+          <MemberCard fullname="Cesar Augusto Rivera Pantaleón" matricula="2025-0751" photoUrl="/integrantes/cesar.jpeg" />
           <MemberCard fullname="Danny Peña Adames" matricula="2025-1124" photoUrl="/integrantes/danny.jpeg" />
           <MemberCard fullname="Andy Yohel Pion Carpio" matricula="2025-0460" photoUrl="/integrantes/default-member-img.webp" />
         </div>
