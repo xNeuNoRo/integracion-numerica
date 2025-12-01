@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import MemberCard from "../components/MemberCard";
 
 export default function HomeView() {
   return (
@@ -46,38 +47,12 @@ export default function HomeView() {
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Integrantes del Grupo</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* 1 */}
-          <div className="bg-white p-4 rounded-xl shadow-md text-center">
-            <img
-              src="https://picsum.photos/200?random=2"
-              alt="Integrante"
-              className="rounded-full w-28 h-28 mx-auto mb-3 object-cover"
-            />
-            <p className="text-lg font-semibold">Nombre del Integrante</p>
-            <p className="text-gray-500 text-sm">Rol: Investigador</p>
-          </div>
-
-          {/* 2 */}
-          <div className="bg-white p-4 rounded-xl shadow-md text-center">
-            <img
-              src="https://picsum.photos/200?random=3"
-              alt="Integrante"
-              className="rounded-full w-28 h-28 mx-auto mb-3 object-cover"
-            />
-            <p className="text-lg font-semibold">Nombre del Integrante</p>
-            <p className="text-gray-500 text-sm">Rol: Diseñador UI</p>
-          </div>
-
-          {/* 3 */}
-          <div className="bg-white p-4 rounded-xl shadow-md text-center">
-            <img
-              src="https://picsum.photos/200?random=4"
-              alt="Integrante"
-              className="rounded-full w-28 h-28 mx-auto mb-3 object-cover"
-            />
-            <p className="text-lg font-semibold">Nombre del Integrante</p>
-            <p className="text-gray-500 text-sm">Rol: Programador</p>
-          </div>
+          <MemberCard fullname="Ángel González Muñoz" matricula="2025-1122" photoUrl="/integrantes/default-member-img.webp" />
+          <MemberCard fullname="Ismael Vásquez" matricula="2025-1204" photoUrl="/integrantes/default-member-img.webp" />
+          <MemberCard fullname="Jhazan Omal Lebrón Encarnación" matricula="2025-0688" photoUrl="/integrantes/default-member-img.webp" />
+          <MemberCard fullname="Cesar Augusto Rivera Pantaleón" matricula="2025-0751" photoUrl="/integrantes/default-member-img.webp" />
+          <MemberCard fullname="Danny Peña Adames" matricula="2025-1124" photoUrl="/integrantes/default-member-img.webp" />
+          <MemberCard fullname="Andy Yohel Pion Carpio" matricula="2025-0460" photoUrl="/integrantes/default-member-img.webp" />
         </div>
       </section>
 
