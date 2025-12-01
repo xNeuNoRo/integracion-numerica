@@ -3,53 +3,55 @@ import { BlockMath, InlineMath } from "react-katex";
 export default function TrapecioIntro() {
   return (
     <section className="mb-8 space-y-4">
-      <h1 className="text-blue-500 font-black text-4xl">
-        Regla del Trapecio
-      </h1>
+      <h1 className="text-blue-500 font-black text-4xl">Regla del Trapecio</h1>
 
       <p className="text-gray-700">
         La Regla del Trapecio es un método de integración numérica que aproxima
-        el área bajo la curva de{" "}
-        <InlineMath math="f(x)" /> reemplazándola por una sucesión de{" "}
-        <span className="font-semibold">trapecios rectilíneos</span>.  
-        En lugar de calcular exactamente{" "}
-        <InlineMath math="\displaystyle \int_a^b f(x)\,dx" />, dividimos el intervalo{" "}
-        <InlineMath math="[a,b]" /> en <InlineMath math="n" /> subintervalos
-        y unimos los puntos de la función mediante segmentos de recta.
+        el área bajo la curva de <InlineMath math="f(x)" /> reemplazándola por
+        una sucesión de{" "}
+        <span className="font-semibold">trapecios rectilíneos</span>. En lugar
+        de calcular exactamente{" "}
+        <InlineMath math="\displaystyle \int_a^b f(x)\,dx" />, dividimos el
+        intervalo <InlineMath math="[a,b]" /> en <InlineMath math="n" />{" "}
+        subintervalos y unimos los puntos de la función mediante segmentos de
+        recta.
       </p>
 
       <p className="text-gray-700">
-        Cada subintervalo genera un trapecio cuya área se suma para aproximar
-        el área total.  
-        A medida que aumenta <InlineMath math="n" />, los trapecios se ajustan
-        mejor a la forma real de la curva y la aproximación mejora.
+        Cada subintervalo genera un trapecio cuya área se suma para aproximar el
+        área total. A medida que aumenta <InlineMath math="n" />, los trapecios
+        se ajustan mejor a la forma real de la curva y la aproximación mejora.
       </p>
 
       {/* Caja azul con fórmula */}
       <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-sm text-gray-800 space-y-4">
-        <p className="font-semibold text-blue-700">Fórmula general de la Regla del Trapecio</p>
+        <p className="font-semibold text-blue-700">
+          Fórmula general de la Regla del Trapecio
+        </p>
 
         <p>
           Sea{" "}
-          <span className="font-mono font-black bg-blue-200/70 px-2 py-1 rounded-xl text-blue-700 text-lg">
+          <span className="font-mono font-black bg-blue-200/70 px-2 py-1 rounded-xl text-blue-700 text-lg whitespace-nowrap overflow-x-auto">
             <InlineMath math="h = \frac{b - a}{n}" />
           </span>{" "}
           y{" "}
-          <span className="font-mono font-black bg-blue-200/70 px-2 py-1 rounded-xl text-blue-700 text-lg">
+          <span className="font-mono font-black bg-blue-200/70 px-2 py-1 rounded-xl text-blue-700 text-lg whitespace-nowrap overflow-x-auto">
             <InlineMath math="x_0 = a,\; x_1,\ldots,x_n = b" />
           </span>
           , entonces:
         </p>
 
-        <div className="font-black text-center text-lg bg-blue-200/70 p-3 rounded-xl text-blue-700">
-          <BlockMath
-            math={`
+        <div className="font-black text-center text-lg bg-blue-200/70 p-3 rounded-xl text-blue-700 overflow-x-auto">
+          <div className="inline-block min-w-max">
+            <BlockMath
+              math={`
               \\int_a^b f(x)\,dx \\approx 
               \\frac{h}{2}\\left[
                 f(x_0) + 2f(x_1) + 2f(x_2) + \\cdots + 2f(x_{n-1}) + f(x_n)
               \\right]
             `}
-          />
+            />
+          </div>
         </div>
 
         <p>
@@ -58,14 +60,18 @@ export default function TrapecioIntro() {
           internos se multiplican por 2. El patrón es:
         </p>
 
-        <div className="text-center bg-blue-200/70 px-2 py-1 rounded-xl text-blue-700 text-lg font-black">
-          <BlockMath
-            math={`
+        <div className="text-center bg-blue-200/70 px-2 py-1 rounded-xl text-blue-700 text-lg font-black overflow-x-auto">
+          <div className="inline-block min-w-max">
+            <BlockMath
+              math={`
               1\\cdot f(x_0) + 2\\cdot f(x_1) + 2\\cdot f(x_2)
               + \\cdots + 2\\cdot f(x_{n-1}) + 1\\cdot f(x_n)
             `}
-          />
-          <p className="font-mono font-semibold mt-1">⟶ &nbsp; 1 &nbsp; 2 &nbsp; 2 &nbsp; … &nbsp; 2 &nbsp; 1</p>
+            />
+            <p className="font-mono font-semibold mt-1">
+              ⟶ &nbsp; 1 &nbsp; 2 &nbsp; 2 &nbsp; … &nbsp; 2 &nbsp; 1
+            </p>
+          </div>
         </div>
       </div>
 
