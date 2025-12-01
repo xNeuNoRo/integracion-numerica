@@ -242,7 +242,12 @@ export default function TrapecioCalc() {
         </p>
       </div>
 
-      <TrapecioPYCode a={a} b={b} n={n} fn={fn} />
+      <div className="mt-10">
+        <h2 className="text-blue-600 font-black text-2xl">
+          Código en Python
+        </h2>
+        <TrapecioPYCode a={a} b={b} n={n} fn={fn} />
+      </div>
     </div>
   );
 }
