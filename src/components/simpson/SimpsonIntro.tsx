@@ -87,7 +87,7 @@ export default function SimpsonIntro() {
       {/* IMAGEN 1 */}
       <figure className="bg-white rounded-xl shadow-sm p-4 border border-gray-100">
         <img
-          src="/simpson_e1.jpg"
+          src="/ejemplos/simpson_e1.jpg"
           alt="Regla de Simpson: una parábola aproximando la curva entre x0, x1 y x2."
           className="w-full max-w-xl mx-auto"
         />
@@ -101,7 +101,7 @@ export default function SimpsonIntro() {
       {/* IMAGEN 2 */}
       <figure className="bg-white rounded-xl shadow-sm p-4 border border-gray-100">
         <img
-          src="/simpson_e2.png"
+          src="/ejemplos/simpson_e2.png"
           alt="Varias parábolas consecutivas aproximando toda el área bajo la curva."
           className="w-full max-w-xl mx-auto"
         />

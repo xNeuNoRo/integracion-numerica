@@ -72,7 +72,7 @@ export default function TrapecioIntro() {
       {/* IMAGEN 1 */}
       <figure className="bg-white rounded-xl shadow-sm p-4 border border-gray-100">
         <img
-          src="/trapecio_e1.png"
+          src="/ejemplos/trapecio_e1.png"
           alt="Regla del Trapecio: un solo trapecio aproximando el área bajo la curva."
           className="w-full max-w-xl mx-auto"
         />
@@ -85,7 +85,7 @@ export default function TrapecioIntro() {
       {/* IMAGEN 2 */}
       <figure className="bg-white rounded-xl shadow-sm p-4 border border-gray-100">
         <img
-          src="/trapecio_e2.png"
+          src="/ejemplos/trapecio_e2.png"
           alt="Varios trapecios consecutivos aproximando el área bajo la curva."
           className="w-full max-w-xl mx-auto"
         />
