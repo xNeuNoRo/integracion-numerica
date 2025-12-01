@@ -1,4 +1,3 @@
-let pyodide;
 let loading = false;
 
 // Manejador de mensajes del worker
@@ -18,14 +17,20 @@ self.onmessage = async (event) => {
     importScripts("https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.js");
 
     // Inicializar Pyodide con manejo de stdout y stderr
-    pyodide = await loadPyodide({
-      // Redirigir la salida estándar y de error al hilo principal mediante el posteo de mensajes
-      stdout: (msg) => self.postMessage({ type: "stdout", msg }),
-      stderr: (msg) => self.postMessage({ type: "stderr", msg }),
+    self.pyodide = await loadPyodide({
+      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/",
+    });
+
+    // Configurar la salida estándar y de errores para enviar mensajes al hilo principal
+    self.pyodide.setStdout({
+      batched: (msg) => self.postMessage({ type: "stdout", msg }),
+    });
+    self.pyodide.setStderr({
+      batched: (msg) => self.postMessage({ type: "stderr", msg }),
     });
 
     // Cargar el paquete numpy
-    await pyodide.loadPackage("numpy");
+    await self.pyodide.loadPackage("numpy");
 
     // Notificar al hilo principal que Pyodide está listo
     self.postMessage({ type: "ready" });
