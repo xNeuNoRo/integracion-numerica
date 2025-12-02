@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import CopyBtn from "../CopyBtn";
 import PyRunner from "../PyRunner";
 import Prism from "prismjs";
-import { validateTrapezoidalMethod } from "../../helpers";
+import { convertMathFnToPython, validateTrapezoidalMethod } from "../../helpers";
 
 type TrapecioPYCodeProps = {
   a: number;
@@ -14,21 +14,7 @@ type TrapecioPYCodeProps = {
 
 export default function TrapecioPYCode({ a, b, n, fn, invalidFn }: TrapecioPYCodeProps) {
   // Conversión completa: JS → Python compatible con numpy
-  const fnPython = fn
-    .replace(/\^/g, "**") // potencia (x^2 → x**2)
-    .replace(/sqrt/g, "np.sqrt") // raíz cuadrada
-    .replace(/sin/g, "np.sin")
-    .replace(/cos/g, "np.cos")
-    .replace(/tan/g, "np.tan")
-    .replace(/asin/g, "np.arcsin")
-    .replace(/acos/g, "np.arccos")
-    .replace(/atan/g, "np.arctan")
-    .replace(/sinh/g, "np.sinh")
-    .replace(/cosh/g, "np.cosh")
-    .replace(/tanh/g, "np.tanh")
-    .replace(/\bpi\b/g, "np.pi") // constantes
-    .replace(/\be\b/g, "np.e")
-    .replace(/\babs/g, "np.abs"); // valor absoluto
+  const fnPython = convertMathFnToPython(fn);
 
   const pyCode = `
 # Regla del Trapecio en Python

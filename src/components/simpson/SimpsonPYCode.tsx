@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import CopyBtn from "../CopyBtn";
 import PyRunner from "../PyRunner";
 import Prism from "prismjs";
-import { validateSimpsonMethod } from "../../helpers";
+import { convertMathFnToPython, validateSimpsonMethod } from "../../helpers";
 
 type SimpsonPYCodeProps = {
   a: number;
@@ -12,23 +12,15 @@ type SimpsonPYCodeProps = {
   invalidFn: boolean;
 };
 
-export default function SimpsonPYCode({ a, b, n, fn, invalidFn }: SimpsonPYCodeProps) {
+export default function SimpsonPYCode({
+  a,
+  b,
+  n,
+  fn,
+  invalidFn,
+}: SimpsonPYCodeProps) {
   // Convertir la función a una sintaxis válida en Python
-  const fnPython = fn
-    .replace(/\^/g, "**") // potencia
-    .replace(/sqrt/g, "np.sqrt") // raíz
-    .replace(/sin/g, "np.sin")
-    .replace(/cos/g, "np.cos")
-    .replace(/tan/g, "np.tan")
-    .replace(/asin/g, "np.arcsin")
-    .replace(/acos/g, "np.arccos")
-    .replace(/atan/g, "np.arctan")
-    .replace(/sinh/g, "np.sinh")
-    .replace(/cosh/g, "np.cosh")
-    .replace(/tanh/g, "np.tanh")
-    .replace(/\bpi\b/g, "np.pi") // constante π
-    .replace(/\be\b/g, "np.e") // constante e
-    .replace(/\babs/g, "np.abs"); // valor absoluto
+  const fnPython = convertMathFnToPython(fn);
 
   const pyCode = `
 # Regla de Simpson en Python
