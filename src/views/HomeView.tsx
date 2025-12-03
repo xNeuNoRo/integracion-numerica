@@ -52,7 +52,6 @@ export default function HomeView() {
           <MemberCard fullname="Jhazan Omal Lebrón Encarnación" matricula="2025-0688" photoUrl="/integrantes/omal.jpeg" />
           <MemberCard fullname="Cesar Augusto Rivera Pantaleón" matricula="2025-0751" photoUrl="/integrantes/cesar.jpeg" />
           <MemberCard fullname="Danny Peña Adames" matricula="2025-1124" photoUrl="/integrantes/danny.jpeg" />
-          <MemberCard fullname="Andy Yohel Pion Carpio" matricula="2025-0460" photoUrl="/integrantes/default-member-img.webp" />
         </div>
       </section>
 
