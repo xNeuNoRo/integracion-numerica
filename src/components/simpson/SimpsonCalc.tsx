@@ -81,19 +81,25 @@ export default function SimpsonCalc() {
       area: number;
     }[] = [];
 
+    // Ancho de cada subintervalo
     const h = (b - a) / n;
 
+    // Calcular áreas de Simpson de 2 en 2
     for (let i = 0; i < n; i += 2) {
+      // Puntos x
       const x0 = a + h * i;
       const x1 = x0 + h;
       const x2 = x1 + h;
 
+      // Evaluar f en esos puntos
       const y0 = f(x0);
       const y1 = f(x1);
       const y2 = f(x2);
 
+      // Área del trapecio
       const area = (h / 3) * (y0 + 4 * y1 + y2);
 
+      // Guardar puntos y área
       arr.push({
         points: [
           { x: x0, y: 0 },
